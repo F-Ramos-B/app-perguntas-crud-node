@@ -49,6 +49,6 @@ Resposta.init(
   }
 );
 
-Resposta.sync({ force: true }).then(() =>
+Resposta.sync({ force: false }).then(() =>
   console.log('Tabela Resposta sincronizada')
 );

@@ -7,16 +7,18 @@
   <div class="card-header">
     <h3>Responder pergunta</h3>
   </div>
-  <form method="POST" action="pergunta-criada">
+  <form method="POST" action="/resposta-criada">
+    <input type="hidden" name="idPergunta" value="<%= pergunta.id %>">
     <div class="card-body">
       <div class="form-group row">
-        <label for="descricao" class="col-sm-2 col-form-label">Resposta</label>
+        <label for="corpo" class="col-sm-2 col-form-label">Resposta</label>
         <div class="col-sm-10">
           <textarea
             class="form-control"
-            name="descricao"
-            id="descricao"
+            name="corpo"
+            id="corpo"
             rows="4"
+            placeholder="Digite sua resposta..."
           ></textarea>
         </div>
       </div>

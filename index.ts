@@ -1,3 +1,5 @@
+import { Resposta } from './src/models/Resposta';
+import { FormResposta } from './src/models/form-resposta';
 import { Pergunta } from './src/models/Pergunta';
 import { FormPergunta } from './src/models/form-pergunta';
 import { Partials } from './src/enums/partials';
@@ -76,7 +78,19 @@ app.post(
     const { titulo, descricao } = req.body;
 
     Pergunta.create({ titulo, descricao }).then(() =>
-      res.render(Views.INDEX, { pagina: Partials.SUCESSO })
+      res.render(Views.INDEX, { pagina: Partials.SUCESSO_PERGUNTA })
+    );
+  }
+);
+
+app.post(
+  '/resposta-criada',
+  (req: Request<{}, {}, FormResposta>, res: Response) => {
+    console.table(req.body);
+    const { idPergunta, corpo } = req.body;
+
+    Resposta.create({ idPergunta, corpo }).then(() =>
+      res.render(Views.INDEX, { pagina: Partials.SUCESSO_RESPOSTA })
     );
   }
 );

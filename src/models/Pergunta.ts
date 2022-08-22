@@ -37,7 +37,7 @@ Pergunta.init(
     dataCriacao: {
       type: DataTypes.DATE,
       field: 'DT_CRIACAO',
-/*       get() {
+      /*       get() {
         const rawValue = this.getDataValue('dataCriacao');
         return moment(rawValue).format('DD/MM/YYYY');
       }, */
@@ -52,9 +52,10 @@ Pergunta.init(
   }
 );
 
-Pergunta.sync({ force: false }).then(() =>
-  console.log('Tabela PERGUNTA sincronizada')
-);
+Pergunta.sync({ force: false }).then(async () => {
+  const total: number = await Pergunta.count();
+  console.log(`Tabela Pergunta sincronizada. Total registros: ${total}`);
+});
 
 /* const PerguntaModel = sequelize.define<Pergunta>(
   'TB_PERGUNTA',

@@ -49,6 +49,7 @@ Resposta.init(
   }
 );
 
-Resposta.sync({ force: false }).then(() =>
-  console.log('Tabela Resposta sincronizada')
-);
+Resposta.sync({ force: false }).then(async () => {
+  const total: number = await Resposta.count();
+  console.log(`Tabela Resposta sincronizada. Total registros: ${total}`);
+});

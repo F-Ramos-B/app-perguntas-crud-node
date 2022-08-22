@@ -1,7 +1,8 @@
 export enum Partials {
-  LISTAR = 'partials/pages/listar',
+  LISTAR_PERGUNTAS = 'partials/pages/listar-perguntas',
   PERGUNTA = 'partials/pages/pergunta',
   SUCESSO_PERGUNTA = 'partials/pages/sucesso-pergunta',
   SUCESSO_RESPOSTA = 'partials/pages/sucesso-resposta',
-  RESPONDER = 'partials/pages/responder'
+  RESPONDER = 'partials/pages/responder',
+  LISTAR_RESPOSTAS = 'partials/pages/listar-respostas',
 }

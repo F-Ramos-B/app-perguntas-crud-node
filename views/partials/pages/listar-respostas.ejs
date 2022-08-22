@@ -1,0 +1,22 @@
+<%- include('resumo-pergunta.ejs') %>
+
+<% if (respostas.length) { %>
+  <% for (let resposta of respostas) { %>
+  <div class="card">
+    <div class="card-header">
+      <h3><%= moment(resposta.dataCriacao).format('DD/MM/YYYY HH:mm:ss') %></h3>
+    </div>
+    <div class="card-body">
+      <h5><%= resposta.corpo %></h5>
+      <hr />
+      <small>(Id: <%= resposta.id %>)</small>
+    </div>
+  </div>
+  <% } %>
+<% } else { %>
+  <div class="card">
+    <div class="card-body">
+      <h6>Nenhuma resposta localizada para essa pergunta.</h6>
+    </div>
+  </div>
+<% } %>

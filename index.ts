@@ -48,7 +48,37 @@ app.get('/', async (req: Request, res: Response) => {
   });
   console.log('Carregando perguntas', perguntas);
 
-  res.render(Views.INDEX, { pagina: Partials.LISTAR, perguntas, moment });
+  res.render(Views.INDEX, {
+    pagina: Partials.LISTAR_PERGUNTAS,
+    perguntas,
+    moment,
+  });
+});
+
+app.get('/listar-respostas/:id', async (req: Request, res: Response) => {
+  const { id } = req.params;
+  console.log('id recebido', id);
+
+  const pergunta = await Pergunta.findByPk(id);
+
+  if (!pergunta) {
+    res.redirect('/');
+  }
+
+  const respostas: Resposta[] = await Resposta.findAll({
+    where: { idPergunta: id },
+    raw: true,
+    order: [['DT_CRIACAO', 'asc']]
+  });
+
+  console.log(`Respostas da pergunta ${id}`, respostas);
+
+  res.render(Views.INDEX, {
+    pagina: Partials.LISTAR_RESPOSTAS,
+    pergunta,
+    respostas,
+    moment,
+  });
 });
 
 app.get('/criar-pergunta', (req: Request, res: Response) => {

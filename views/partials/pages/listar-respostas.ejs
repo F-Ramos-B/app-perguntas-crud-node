@@ -1,6 +1,7 @@
 <%- include('resumo-pergunta.ejs') %>
 
 <% if (respostas.length) { %>
+  <hr />
   <% for (let resposta of respostas) { %>
   <div class="card">
     <div class="card-header">
@@ -12,6 +13,7 @@
       <small>(Id: <%= resposta.id %>)</small>
     </div>
   </div>
+  <hr />
   <% } %>
 <% } else { %>
   <div class="card">
